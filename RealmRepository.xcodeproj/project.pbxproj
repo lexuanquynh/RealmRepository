@@ -42,6 +42,9 @@
 		227E27D6287FFFC500946ED5 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227E27D5287FFFC500946ED5 /* Business.swift */; };
 		227E27D8288006B200946ED5 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227E27D7288006B200946ED5 /* Task.swift */; };
 		227E27DA2880085200946ED5 /* EmbeddedObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227E27D92880085200946ED5 /* EmbeddedObjectTests.swift */; };
+		227E27DC2880132B00946ED5 /* MigrationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227E27DB2880132B00946ED5 /* MigrationRepository.swift */; };
+		227E27E1288013CC00946ED5 /* MigrationSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227E27E0288013CC00946ED5 /* MigrationSample.swift */; };
+		227E27E3288013F500946ED5 /* MigrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227E27E2288013F500946ED5 /* MigrationTests.swift */; };
 		39BEBD7039BA055A8416B1D7 /* Pods_RealmRepository.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8E4EF33849BB47F1A8F2EE /* Pods_RealmRepository.framework */; };
 		5348998870429DC32AE9AFAC /* Pods_RealmRepositoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42100B415790761C55EDEF5A /* Pods_RealmRepositoryTests.framework */; };
 		8DC11EF82BD3BC8A386A1C08 /* Pods_RealmRepository_RealmRepositoryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF848835707173EFAE688E54 /* Pods_RealmRepository_RealmRepositoryUITests.framework */; };
@@ -141,6 +144,9 @@
 		227E27D5287FFFC500946ED5 /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		227E27D7288006B200946ED5 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		227E27D92880085200946ED5 /* EmbeddedObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedObjectTests.swift; sourceTree = "<group>"; };
+		227E27DB2880132B00946ED5 /* MigrationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationRepository.swift; sourceTree = "<group>"; };
+		227E27E0288013CC00946ED5 /* MigrationSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationSample.swift; sourceTree = "<group>"; };
+		227E27E2288013F500946ED5 /* MigrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationTests.swift; sourceTree = "<group>"; };
 		30917C6C9FFEAB2D0F8FC136 /* Pods-RealmManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmManager.debug.xcconfig"; path = "Target Support Files/Pods-RealmManager/Pods-RealmManager.debug.xcconfig"; sourceTree = "<group>"; };
 		3661C456DD3CFEBF41FD2800 /* Pods-RealmManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmManager.release.xcconfig"; path = "Target Support Files/Pods-RealmManager/Pods-RealmManager.release.xcconfig"; sourceTree = "<group>"; };
 		3D4520292789F1F617792068 /* Pods-RealmRepository-RealmRepositoryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmRepository-RealmRepositoryUITests.debug.xcconfig"; path = "Target Support Files/Pods-RealmRepository-RealmRepositoryUITests/Pods-RealmRepository-RealmRepositoryUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -313,14 +319,10 @@
 		227E27B9287FC51300946ED5 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				227E27DF288013B300946ED5 /* Migrations */,
+				227E27DE2880137E00946ED5 /* Embeddeds */,
+				227E27DD2880136F00946ED5 /* Pets */,
 				227E27BA287FC55400946ED5 /* CoffeeDrink.swift */,
-				227E27BF287FCBF200946ED5 /* Person.swift */,
-				227E27C1287FCC0E00946ED5 /* DogToy.swift */,
-				227E27C3287FCC2400946ED5 /* Dog.swift */,
-				227E27C5287FCC3A00946ED5 /* DogClub.swift */,
-				227E27CD287FFDC900946ED5 /* Address.swift */,
-				227E27CF287FFDF000946ED5 /* Contact.swift */,
-				227E27D5287FFFC500946ED5 /* Business.swift */,
 				227E27D7288006B200946ED5 /* Task.swift */,
 			);
 			path = Entities;
@@ -332,6 +334,7 @@
 				227E27BC287FC5DA00946ED5 /* CoffeeDrinkRepository.swift */,
 				227E27C8287FCCAB00946ED5 /* PetRepository.swift */,
 				227E27D1287FFE8500946ED5 /* EmbeddedRepository.swift */,
+				227E27DB2880132B00946ED5 /* MigrationRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -342,8 +345,38 @@
 				227E279D287FC15800946ED5 /* RealmManagerTests.swift */,
 				227E27CB287FCD1A00946ED5 /* PetTests.swift */,
 				227E27D92880085200946ED5 /* EmbeddedObjectTests.swift */,
+				227E27E2288013F500946ED5 /* MigrationTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		227E27DD2880136F00946ED5 /* Pets */ = {
+			isa = PBXGroup;
+			children = (
+				227E27BF287FCBF200946ED5 /* Person.swift */,
+				227E27C1287FCC0E00946ED5 /* DogToy.swift */,
+				227E27C3287FCC2400946ED5 /* Dog.swift */,
+				227E27C5287FCC3A00946ED5 /* DogClub.swift */,
+			);
+			path = Pets;
+			sourceTree = "<group>";
+		};
+		227E27DE2880137E00946ED5 /* Embeddeds */ = {
+			isa = PBXGroup;
+			children = (
+				227E27CD287FFDC900946ED5 /* Address.swift */,
+				227E27CF287FFDF000946ED5 /* Contact.swift */,
+				227E27D5287FFFC500946ED5 /* Business.swift */,
+			);
+			path = Embeddeds;
+			sourceTree = "<group>";
+		};
+		227E27DF288013B300946ED5 /* Migrations */ = {
+			isa = PBXGroup;
+			children = (
+				227E27E0288013CC00946ED5 /* MigrationSample.swift */,
+			);
+			path = Migrations;
 			sourceTree = "<group>";
 		};
 		FC9F4FA72F29522A5E4135C9 /* Frameworks */ = {
@@ -788,7 +821,10 @@
 				227E27BE287FC68900946ED5 /* CoffeeDrink.swift in Sources */,
 				227E27C6287FCC3A00946ED5 /* DogClub.swift in Sources */,
 				227E27D2287FFE8500946ED5 /* EmbeddedRepository.swift in Sources */,
+				227E27E1288013CC00946ED5 /* MigrationSample.swift in Sources */,
 				227E27C9287FCCAB00946ED5 /* PetRepository.swift in Sources */,
+				227E27DC2880132B00946ED5 /* MigrationRepository.swift in Sources */,
+				227E27E3288013F500946ED5 /* MigrationTests.swift in Sources */,
 				227E27CC287FCD1A00946ED5 /* PetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1161,9 +1197,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codetoanbug.RealmManagerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -1184,6 +1225,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codetoanbug.RealmManagerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;

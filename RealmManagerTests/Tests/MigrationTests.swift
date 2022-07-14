@@ -6,9 +6,11 @@
 //
 
 import XCTest
+@testable import RealmManager
 
 final class MigrationTests: XCTestCase {
-
+    let repository = MigrationRepository()
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -17,12 +19,24 @@ final class MigrationTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    // Read more: https://www.mongodb.com/docs/realm/sdk/swift/model-data/change-an-object-model/
+    func testFirstVersion() throws {
+        let expectation = self.expectation(description: "Realm manager API")
+        let sample = MigrationSample()
+        sample.firstName = "firstName 0"
+        sample.lastName = "lastName 0"
+
+        repository.save(entity: sample, update: false) { result in
+            switch result {
+            case .success:
+                XCTAssertTrue(true)
+                expectation.fulfill()
+            case .failure:
+                XCTAssertTrue(false)
+                expectation.fulfill()
+            }
+        }
+        self.waitForExpectations(timeout: 5.0, handler: nil)
     }
 
     func testPerformanceExample() throws {
