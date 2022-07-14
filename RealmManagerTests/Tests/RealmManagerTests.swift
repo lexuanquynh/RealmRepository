@@ -30,4 +30,36 @@ final class RealmManagerTests: XCTestCase {
         }
         self.waitForExpectations(timeout: 5.0, handler: nil)
     }
+
+    /* Test after run testSaveObjectNonPrimaryKey function
+    func testQueryObjects() {
+        let expectation = self.expectation(description: "Delete object API")
+        let coffeDrinks = repository.queryAll(returningClass: CoffeeDrink.self)
+        XCTAssertTrue(coffeDrinks != nil && coffeDrinks!.isEmpty == false)
+        coffeDrinks!.forEach({ coffeDrink in
+            print(coffeDrink.name)
+        })
+
+        let cofferRate = coffeDrinks!.filter { $0.rating == 4 }
+        XCTAssertTrue(!cofferRate.isEmpty)
+
+        // delete a object
+        let firstCoffer = cofferRate.first!
+        repository.delete(entity: firstCoffer) { result in
+            switch result {
+            case .success:
+                XCTAssertTrue(true)
+                expectation.fulfill()
+            case .failure:
+                XCTAssertTrue(false)
+                expectation.fulfill()
+            }
+        }
+        self.waitForExpectations(timeout: 5.0, handler: nil)
+    }
+*/
+    // Query read more:
+    // https://www.mongodb.com/docs/realm/sdk/swift/crud/filter-data/
+
+
 }

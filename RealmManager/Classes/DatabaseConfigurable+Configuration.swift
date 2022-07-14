@@ -6,7 +6,6 @@
 //
 
 import RealmSwift
-//import RxSwift
 
 // MARK: Configure
 extension DatabaseConfigurable {
@@ -58,7 +57,13 @@ extension DatabaseConfigurable {
         return realm
     }
 
-    // MARK: Non-Rx
+    // MARK: Non-Rx actions
+
+    /// Save an entity objbect
+    /// - Parameters:
+    ///   - entity: entity need save
+    ///   - update: update need update or not
+    ///   - completion: completion success or failed
     func save(entity: Object, update: Bool, completion: @escaping (Result<Bool, RealmErrorType>) -> Void) {
         guard let realm = self.realm() else {
             completion(.failure(.realmIsEmpty))
@@ -81,6 +86,11 @@ extension DatabaseConfigurable {
         }
     }
 
+    /// Save the entities object
+    /// - Parameters:
+    ///   - entities: entities list need save
+    ///   - update: update need or not
+    ///   - completion: completion success or failed
     func save(entities: [Object], update: Bool = true, completion: @escaping (Result<Bool, RealmErrorType>) -> Void) {
         guard let realm = self.realm() else {
             completion(.failure(.realmIsEmpty))
@@ -100,6 +110,12 @@ extension DatabaseConfigurable {
         }
     }
 
+    /// Save a data json
+    /// - Parameters:
+    ///   - saveClass: saveClass type class Object need save
+    ///   - jsonData: jsonData data need save
+    ///   - update: update need or not
+    ///   - completion: completion success or failed
     func save<T>(saveClass: T.Type, jsonData: Data, update: Bool, completion: @escaping (Result<Bool, RealmErrorType>) -> Void) where T: Object  {
         guard let realm = self.realm() else {
             completion(.failure(.realmIsEmpty))
@@ -121,8 +137,11 @@ extension DatabaseConfigurable {
 
     }
 
-
-    func delete(entity: Object, update: Bool = true, completion: @escaping (Result<Bool, RealmErrorType>) -> Void) {
+    /// delete an entity object.
+    /// - Parameters:
+    ///   - entity: entity need delete
+    ///   - completion: completion success or failed
+    func delete(entity: Object, completion: @escaping (Result<Bool, RealmErrorType>) -> Void) {
         guard let realm = self.realm() else {
             completion(.failure(.realmIsEmpty))
             return
@@ -138,6 +157,14 @@ extension DatabaseConfigurable {
                 completion(.success(true))
             }
         }
+    }
+
+    func queryAll<T>(returningClass: T.Type) -> Results<T>? where T: Object {
+        guard let realm = self.realm() else {
+            return nil
+        }
+        let results = realm.objects(T.self)
+        return results
     }
 }
 

@@ -10,14 +10,6 @@ import XCTest
 
 final class MigrationTests: XCTestCase {
     let repository = MigrationRepository()
-    
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
 
     // Read more: https://www.mongodb.com/docs/realm/sdk/swift/model-data/change-an-object-model/
     func testFirstVersion() throws {
@@ -38,12 +30,4 @@ final class MigrationTests: XCTestCase {
         }
         self.waitForExpectations(timeout: 5.0, handler: nil)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
