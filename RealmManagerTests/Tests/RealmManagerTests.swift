@@ -60,6 +60,4 @@ final class RealmManagerTests: XCTestCase {
 */
     // Query read more:
     // https://www.mongodb.com/docs/realm/sdk/swift/crud/filter-data/
-
-
 }
